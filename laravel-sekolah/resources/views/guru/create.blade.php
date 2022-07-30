@@ -33,7 +33,7 @@
                             <label for="kelas">Kelas</label>
                             <select name="kelas[]" id="kelas" class="form-control">
                                 @foreach ($kelas as $per_kelas)
-                                <option value="{{ $per_kelas->id }}">{{ $per_kelas->name }}</option>
+                                    <option value="{{ $per_kelas->id }}">{{ $per_kelas->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -41,8 +41,8 @@
                         <div class="col-6">
                             <label for="mapel">Mapel</label>
                             <select name="mapel[]" id="mapel" class="form-control">
-                                @foreach ($mapels as $mapel )
-                                <option value="{{ $mapel->id }}">{{ $mapel->name }}</option>
+                                @foreach ($mapels as $mapel)
+                                    <option value="{{ $mapel->id }}">{{ $mapel->name }}</option>
                                 @endforeach
                             </select>
 
@@ -55,12 +55,12 @@
                 {{-- <form action="">
 
                 </form> --}}
-
+                <button type="button" class="btn btn-secondary btn-sm float-end" id="tambah-kelas">
+                    + Tambah Kelas
+                </button>
+                <button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
             </form>
-            <button type="button" class="btn btn-secondary btn-sm float-end" id="tambah-kelas">
-                + Tambah Kelas
-            </button>
-            <button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
+
         </div>
     </section>
 @endsection
@@ -71,9 +71,9 @@
         let button = document.querySelector('#tambah-kelas')
         let mengajarForm = document.getElementById('mengajar-form')
 
-        button.addEventListener('click', ()=>{
+        button.addEventListener('click', () => {
             let clone = mengajarForm.cloneNode(true)
-            form.appendChild(clone)
+            mengajarForm.after(clone)
         })
     </script>
 @endpush
