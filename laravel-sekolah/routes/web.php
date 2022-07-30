@@ -18,6 +18,7 @@ use App\Http\Controllers\SiswaController;
 */
 
 Route::get('/guru', [GuruController::class, 'index']);
+Route::get('/guru/{id}', [GuruController::class, 'show']);
 Route::get('/guru/create', [GuruController::class, 'create']);
 Route::post('/guru', [GuruController::class, 'store']);
 Route::get('/guru/{id}/edit', [GuruController::class, 'edit']);

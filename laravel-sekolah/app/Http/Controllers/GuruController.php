@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Mapel;
+use App\Models\Mengajar;
 use Illuminate\Http\Request;
 
 class GuruController extends Controller
@@ -40,17 +41,33 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
+
         $name = $request->name;
         $address = $request->address;
         $dob = $request->dob;
         $gender = $request->gender;
+        $mapel = $request->mapel;
+        $kelas = $request->kelas;
 
-        $inserted = Guru::create([
+
+        $insertedGuru = Guru::create([
             'name' => $name,
             'address' => $address,
             'dob' => $dob,
             'gender' => $gender,
         ]);
+
+        $insertMengajarData = [];
+        for($i = 0; $i < count($mapel); $i++){
+            array_push($insertMengajarData,[
+                'kelas_id'  => $kelas[$i],
+                'guru_id' => $insertedGuru->id,
+                'mapel_id'  => $mapel[$i]
+            ]);
+        }
+
+        $insertMengajar = Mengajar::insert($insertMengajarData);
+
 
         return redirect('/guru');
     }
@@ -63,7 +80,8 @@ class GuruController extends Controller
      */
     public function show($id)
     {
-        //
+        $guru = Guru::findOrFail($id);
+        return view('guru.detail', compact('guru'));
     }
 
     /**

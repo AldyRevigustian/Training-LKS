@@ -15,4 +15,12 @@ class Mengajar extends Model
         "kelas_id",
         "mapel_id"
     ];
+
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
+
+    public function mapel(){
+        return $this->belongsTo(Mapel::class);
+    }
 }

@@ -55,10 +55,10 @@
                 {{-- <form action="">
 
                 </form> --}}
-                <button type="button" class="btn btn-secondary btn-sm float-end" id="tambah-kelas">
+                <button type="button" class="btn btn-secondary btn-sm float-end" id="tambah-kelas" >
                     + Tambah Kelas
                 </button>
-                <button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
+                <button type="submit" class="btn btn-primary float-end mt-5">Submit</button>
             </form>
 
         </div>
@@ -67,7 +67,6 @@
 
 @push('scripts')
     <script>
-        let form = document.querySelector('form')
         let button = document.querySelector('#tambah-kelas')
         let mengajarForm = document.getElementById('mengajar-form')
 

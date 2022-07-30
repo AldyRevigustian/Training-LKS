@@ -17,4 +17,8 @@ class Guru extends Model
         "address",
         "gender"
     ];
+
+    public function mengajar(){
+        return $this->hasMany(Mengajar::class);
+    }
 }
