@@ -27,7 +27,7 @@
                 </div>
 
 
-                <div class="mt-5">
+                <div class="mt-5" id="mengajar-form">
                     <div class="row">
                         <div class="col-6">
                             <label for="kelas">Kelas</label>
@@ -45,20 +45,22 @@
                                 <option value="{{ $mapel->id }}">{{ $mapel->name }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" class="btn btn-secondary btn-sm float-end" id="tambah-kelas">
-                                + Tambah Kelas
-                            </button>
+
                         </div>
 
                     </div>
                 </div>
 
+
                 {{-- <form action="">
 
                 </form> --}}
 
-                <button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
             </form>
+            <button type="button" class="btn btn-secondary btn-sm float-end" id="tambah-kelas">
+                + Tambah Kelas
+            </button>
+            <button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
         </div>
     </section>
 @endsection
@@ -66,6 +68,12 @@
 @push('scripts')
     <script>
         let form = document.querySelector('form')
-        let button = document.querySelector('tambah-kelas')
+        let button = document.querySelector('#tambah-kelas')
+        let mengajarForm = document.getElementById('mengajar-form')
+
+        button.addEventListener('click', ()=>{
+            let clone = mengajarForm.cloneNode(true)
+            form.appendChild(clone)
+        })
     </script>
 @endpush
