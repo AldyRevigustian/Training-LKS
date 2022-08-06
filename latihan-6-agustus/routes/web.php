@@ -42,7 +42,7 @@ Route::prefix('events')->group(function () {
         Route::get('/rooms/create', [RoomController::class, 'create']);
         Route::post('/rooms', [RoomController::class, 'store']);
 
-        Route::get('/sessions/create', [SessionController::class, 'create']);
-        Route::post('/sessions', [SessionController::class, 'store']);
+        Route::get('/sessions/create', [SessionController::class, 'create'])->name('session.create');
+        Route::post('/sessions', [SessionController::class, 'store'])->name('session.store');
     });
 });

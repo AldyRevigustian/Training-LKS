@@ -14,6 +14,13 @@
         <span class="h6">{{ $event->date }}</span>
     </div>
 
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+
     <!-- Tickets -->
     <div id="tickets" class="mb-3 pt-3 pb-2">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
@@ -59,7 +66,8 @@
             <h2 class="h4">Sessions</h2>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group mr-2">
-                    <a href="sessions/create.html" class="btn btn-sm btn-outline-secondary">
+                    <a href="{{ Route('session.create', ['event' => $event->id]) }}"
+                        class="btn btn-sm btn-outline-secondary">
                         Create new session
                     </a>
                 </div>
@@ -85,9 +93,11 @@
                             <td class="text-nowrap">{{ date('H:i', strtotime($session->start)) }} -
                                 {{ date('H:i', strtotime($session->end)) }}</td>
                             <td>{{ ucfirst($session->type) }}</td>
-                            <td><a href="{{ url('/events/'. $event->id. '/sessions/' . $session->id)}}">{{ $session->title }}</a></td>
+                            <td><a
+                                    href="{{ url('/events/' . $event->id . '/sessions/' . $session->id) }}">{{ $session->title }}</a>
+                            </td>
                             <td class="text-nowrap">{{ $session->speaker }}</td>
-                            <td class="text-nowrap">{{  $room->channel->name }} / {{ $room->name }}</td>
+                            <td class="text-nowrap">{{ $room->channel->name }} / {{ $room->name }}</td>
                         </tr>
                     @endforeach
                 @endforeach
@@ -111,22 +121,18 @@
     </div>
 
     <div class="row channels">
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Main</h5>
-                    <p class="card-text">3 sessions, 1 room</p>
+        @foreach ($event->channels as $channel)
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $channel->name }}</h5>
+                        <p class="card-text">{{ $channel->sessions->count() }} sessions, {{ $channel->rooms->count() }}
+                            room</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Side</h5>
-                    <p class="card-text">15 sessions, 2 rooms</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
+
     </div>
 
     <!-- Rooms -->
@@ -152,22 +158,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Room A</td>
-                    <td>1,000</td>
-                </tr>
-                <tr>
-                    <td>Room B</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>Room C</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>Room D</td>
-                    <td>250</td>
-                </tr>
+                @foreach ($event->rooms as $room)
+                    <tr>
+                        <td>{{ $room->name }}</td>
+                        <td>{{ $room->capacity }}</td>
+                    </tr>
+                @endforeach
+
             </tbody>
         </table>
     </div>
