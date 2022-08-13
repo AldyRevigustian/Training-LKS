@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
     use HasFactory;
+
+    protected $hidden = [
+        'room_id'
+    ];
+
     public $timestamps = false;
     protected $fillable = [
         'type',

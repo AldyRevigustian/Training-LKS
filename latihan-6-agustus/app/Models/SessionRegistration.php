@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SessionRegistration extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'registration_id',
+        'session_id'
+        // 'attendee_id'
+    ];
 }

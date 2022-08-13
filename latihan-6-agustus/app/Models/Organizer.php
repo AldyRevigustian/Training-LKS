@@ -10,6 +10,11 @@ class Organizer extends Authenticatable
 {
     use HasFactory;
 
+    protected $hidden = [
+        "email",
+        "password_hash"
+    ];
+
     public function getAuthPassword(){
         return $this->password_hash;
     }

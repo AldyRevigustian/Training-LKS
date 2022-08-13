@@ -9,6 +9,14 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        "organizer_id",
+    ];
+
+    public function organizer (){
+        return $this->belongsTo(Organizer::class);
+    }
+
     public function tickets(){
         return $this->hasMany(EventTicket::class, 'event_id', 'id');
     }

@@ -9,6 +9,10 @@ class Channel extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'event_id'
+    ];
+
     public function sessions(){
         return $this->hasManyThrough(Session::class, Room::class);
     }

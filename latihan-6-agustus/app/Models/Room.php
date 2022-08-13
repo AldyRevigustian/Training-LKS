@@ -9,6 +9,11 @@ class Room extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'channel_id',
+        'capacity'
+    ];
+
     public function sessions(){
         return $this->hasMany(Session::class);
     }

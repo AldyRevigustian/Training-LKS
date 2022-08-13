@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Attendee extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'login_token'
+    ];
+
+    public $timestamps  = false;
 }
