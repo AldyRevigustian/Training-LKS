@@ -39,7 +39,7 @@ export const useStore = defineStore("food", () => {
   ])
 
   function createTransaction(name,food,price,quantity){
-    transactions.push({name,food,price,quantity})
+    transactions.value.push({name,food,price,quantity})
   }
 
   return {
