@@ -3,21 +3,26 @@ import { ref } from "vue";
 import Card from "../components/Card.vue";
 import Table from "../components/Table.vue";
 import TableData from "../components/TableData.vue";
+import Button from "../components/Button.vue";
+import { useStore } from "../store/foods";
 
-let foods = ref([
-  {
-    name: "Nasi Goreng",
-    price: 10000,
-  },
-  {
-    name: "Nasi Uduk",
-    price: 15000,
-  },
-  {
-    name: "Nasi Kuning",
-    price: 20000,
-  },
-]);
+let isFormAddShow = ref(false);
+let addName = ref("");
+let addPrice = ref(0);
+
+let store = useStore();
+let foods = store.foods;
+
+function submitItem() {
+  // foods.value.push({
+  //   name: addName.value,
+  //   price:addPrice.value
+  // })
+  if (addName.value == "") return alert("Nama Tidak Boleh Kosong");
+  if (!addPrice.value) return alert("Harga Tidak Boleh Kosong");
+  store.addFood(addName.value, addPrice.value);
+  isFormAddShow.value = false;
+}
 </script>
 
 <template>
@@ -26,25 +31,42 @@ let foods = ref([
     <Card>
       <template #card-header> Daftar produk </template>
       <template #card-body>
-        <form v-on:submit.prevent="submitItem">
+        <Button class="bg-blue-500" @click="isFormAddShow = !isFormAddShow"
+          >Add Product</Button
+        >
+        <form v-on:submit.prevent="submitItem" v-show="isFormAddShow" class="mt-5">
           <div>
-            <label for="nama">nama</label>
-            <input class="w-full border border-grey-300 rounded-sm mb-2 p-2 " type="text" name="nama" placeholder="Nama Makanan" v-model="addName" />
+            <label for="nama">Nama</label>
+            <input
+              class="w-full border border-grey-300 rounded-sm mb-3 p-2"
+              type="text"
+              name="nama"
+              placeholder="Nama Makanan"
+              v-model="addName"
+            />
           </div>
 
           <div>
             <label for="harga">Harga</label>
-            <input class="w-full border border-grey-300 rounded-sm mb-2 p-2 " type="number" name="harga" id="harga" v-model="addPrice" />
+            <input
+              class="w-full border border-grey-300 rounded-sm mb-3 p-2"
+              type="number"
+              name="harga"
+              id="harga"
+              v-model="addPrice"
+            />
           </div>
-
-          <button class="bg-gradient-to-r from-blue-500 to-sky-500 px-3 py-2 text-white rounded-md" type="submit">Submit</button>
+          <Button class="bg-blue-500">Submit</Button>
         </form>
-        <Table>
+        <Table :headings="['No', 'Nama', 'Harga', 'Action']">
           <tr v-for="(t, index) in foods" :key="index">
             <TableData class="text-center">{{ index + 1 }}</TableData>
             <TableData>{{ t.name }}</TableData>
             <TableData>Rp. {{ t.price }}</TableData>
-            <TableData>Edit Delete</TableData>
+            <TableData class="text-center w-[200px]">
+              <Button class="bg-green-500 mx-2"> Edit </Button>
+              <Button class="bg-red-500"> Delete </Button>
+            </TableData>
           </tr>
         </Table>
       </template>
