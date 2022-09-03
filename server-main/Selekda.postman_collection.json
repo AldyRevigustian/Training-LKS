@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "b22bfd3d-a9ef-4061-a89b-72a1bba9262c",
+		"name": "Selekda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "ogi2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ogi123",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/home/zuramai/Pictures/Screenshot_20220129_200524.png"
+								},
+								{
+									"key": "name",
+									"value": "asd",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "asd@gmail.com2",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "dob",
+									"value": "2022-02-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/auth/register",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "ogi2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ogi123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/auth/login",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banners",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{$host}}/banners",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"banners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Judul",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/zuramai/Pictures/Screenshot_20220129_200524.png"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/banners",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"banners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Judul",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/zuramai/Pictures/Screenshot_20220129_200524.png"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/banners/3/edit",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"banners",
+								"3",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Judul",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/zuramai/Pictures/Screenshot_20220129_200524.png"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/banners/4",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"banners",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Judul",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/zuramai/Pictures/Screenshot_20220129_200524.png"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/banners/3",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"banners",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "Leaderboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{$host}}/leaderboard",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"leaderboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Score",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "score",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "lifetime",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{$host}}/score",
+							"host": [
+								"{{$host}}"
+							],
+							"path": [
+								"score"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "20|6UU7R7D2k8SaCteNfK3yKDZW9GnXIbXU3sy0I2vb",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "$host",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
