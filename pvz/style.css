@@ -1,0 +1,94 @@
+:root{
+    --color-bg: #662f10;
+    --color-bg-darker: #44200a;
+    /* --color-bg-lighten: ; */
+    --color-success: #0088d000;
+    --color-warning: #fff601;
+    --color-text: #fff;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#app{
+    background-color: var(--color-bg);
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.main-menu{
+    width: 30%;
+    margin-right: 3rem;
+}
+.main-menu .logo img{
+    width: 100%;
+}
+
+.form{
+    margin-top: 1rem;
+}
+
+.input{
+    padding: 0.4rem;
+    border: 4px solid #9b572e;
+    color: white;
+    border-radius: .4rem;
+    background-color: var(--color-bg-darker);
+    font-size: 1rem;
+    margin-bottom: .5rem;
+    width: 100%;
+}
+.input::placeholder{
+    color: white;
+    opacity: 1;
+}
+
+.instructions{
+    width: 50%;
+    background-color: var(--color-bg-darker);
+    color: var(--color-text);
+    font-family: var(--font-family);
+}
+
+.buttons{
+    display: flex;
+    gap: .5rem;
+}
+
+.buttons button{
+    flex-grow: 1;
+    padding: .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.instructions{
+    height: 60%;
+    padding: 2rem;
+}
+
+.instructions ol{
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
