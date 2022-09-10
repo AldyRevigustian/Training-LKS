@@ -92,3 +92,19 @@ body{
     margin-left: 1rem;
     margin-top: 1rem;
 }
+
+#pause-popup{
+    font-family: var(--font-family);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    min-height: 100px;
+    padding: 2rem;
+    background-color: white;
+}
+
+.hidden{
+    display: none;
+}

@@ -18,6 +18,6 @@ export default class Pea{
     }
 
     update(){
-        this.x++
+        this.x += 0.5
     }
 } 

@@ -22,8 +22,6 @@ export default class Plant{
         setInterval(() => {
             this.update()
         }, 120);
-
-       
     }
 
     draw(ctx){
@@ -36,6 +34,6 @@ export default class Plant{
     }
 
     shoot(){
-        return new Pea(this.x, this.y)
+        return new Pea(this.x +60, this.y + 10, false)
     }
 }
